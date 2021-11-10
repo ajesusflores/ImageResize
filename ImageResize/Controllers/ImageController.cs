@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ImageResize.Controllers
 {
@@ -28,8 +24,8 @@ namespace ImageResize.Controllers
         {
             var memoryStream = new MemoryStream();
             file.CopyTo(memoryStream);
-            var bytes = _imageProcessor.ResizeImage(memoryStream.ToArray());
-            return File(bytes.ImageData, "image/jpeg", "test.jpg");
+            var data = _imageProcessor.ResizeImage(memoryStream.ToArray());
+            return File(data.ImageData, data.ContentType, $"test.{data.Extension}");
         }
     }
 }

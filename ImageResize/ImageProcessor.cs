@@ -26,7 +26,8 @@ namespace ImageResize
             return new ImageResizeData
             {
                 ImageData = stream.ToArray(),
-                ContentType = format.DefaultMimeType
+                ContentType = format.DefaultMimeType,
+                Extension = format.Name.ToLower()
             };
         }
     }
