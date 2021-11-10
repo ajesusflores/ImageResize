@@ -22,7 +22,7 @@ namespace ImageResize.Controllers
         [Route("resize")]
         public IActionResult Resize(IFormFile file)
         {
-            var memoryStream = new MemoryStream();
+            using var memoryStream = new MemoryStream();
             file.CopyTo(memoryStream);
             var data = _imageProcessor.ResizeImage(memoryStream.ToArray());
             return File(data.ImageData, data.ContentType, $"test.{data.Extension}");

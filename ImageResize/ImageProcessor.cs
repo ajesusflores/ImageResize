@@ -19,7 +19,7 @@ namespace ImageResize
             int width = sharpImage.Width / 10;
             int height = sharpImage.Height / 10;
 
-            var stream = new MemoryStream();
+            using var stream = new MemoryStream();
             sharpImage.Mutate(x => x.Resize(width, height, KnownResamplers.Bicubic));
 
             sharpImage.Save(stream, format);
