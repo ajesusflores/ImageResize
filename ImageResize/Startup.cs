@@ -32,6 +32,7 @@ namespace ImageResize
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ImageResize", Version = "v1" });
             });
+            services.AddTransient<IImageProcessor, ImageProcessor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
